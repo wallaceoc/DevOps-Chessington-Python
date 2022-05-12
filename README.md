@@ -15,8 +15,7 @@ None of the rules of chess have been implemented yet! That's your job :)
 
 ## Running the tests
 
-To run the tests, use the command ``poetry run pytest tests``. This will run any test defined in a function
-matching the pattern ``test_*`` or ``*_test``, in any file matching the same patterns, in the ``tests`` directory.
+To run the tests, use the command `poetry run pytest tests`. This will search the "tests" directory for files starting in `test_` or ending in `_test`. Inside those files, any function starting with `test_` will be considered a test.
 
 ## GUI Dependencies
 

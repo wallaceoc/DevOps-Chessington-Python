@@ -18,6 +18,13 @@ None of the rules of chess have been implemented yet! That's your job :)
 To run the tests, use the command ``poetry run pytest tests``. This will run any test defined in a function
 matching the pattern ``test_*`` or ``*_test``, in any file matching the same patterns, in the ``tests`` directory.
 
+## Debugging
+
+VSCode debug config has been set up, but you will need to select your virtual environments python interpreter
+before running either the tests or app in debug mode. You can do this in VS Code by going to `View`->`Command Palette`,
+searching for `Python: Select Interpreter` and then browse your machine to find the appropriate python executable (e.g. 
+`.venv\Scripts\python.exe` or `.venv\Scripts\python`)
+
 ## GUI Dependencies
 
 The application runs a desktop GUI using Tkinter. If you're running an official Python distribution, this will just

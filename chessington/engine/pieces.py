@@ -1,21 +1,21 @@
-"""
-Definitions of each of the different chess pieces.
-"""
-
+from __future__ import annotations
 from abc import ABC, abstractmethod
-
 from chessington.engine.data import Player, Square
+from typing import TYPE_CHECKING, List
+
+if TYPE_CHECKING:
+    from chessington.engine.board import Board
 
 class Piece(ABC):
     """
     An abstract base class from which all pieces inherit.
     """
 
-    def __init__(self, player):
+    def __init__(self, player: Player):
         self.player = player
 
     @abstractmethod
-    def get_available_moves(self, board):
+    def get_available_moves(self, board: Board) -> List[Square]:
         """
         Get all squares that the piece is allowed to move to.
         """
@@ -33,8 +33,7 @@ class Pawn(Piece):
     """
     A class representing a chess pawn.
     """
-
-    def get_available_moves(self, board):
+    def get_available_moves(self, board) -> List[Square]:
         return []
 
 

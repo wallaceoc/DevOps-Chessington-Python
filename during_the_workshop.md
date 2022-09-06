@@ -7,6 +7,8 @@
 
 Fork and clone this repo, then follow the instructions in [README.md](./README.md) to get the app and tests running.
 
+**Make sure you copy all branches and tags, not just the master branch when you fork on GitHub.**
+
 ## Part 1
 
 When you're ready, run `git cherry-pick red-1`. You'll notice some new unit tests have appeared! Run the unit tests and see what's failed. Working in a pair, implement the minimum functionality required to pass the tests.

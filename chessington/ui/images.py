@@ -40,7 +40,7 @@ class ImageRepository:
         mapping['empty'] = piece_on_all_backgrounds(None)
         self._images = mapping
 
-    def get_image(self, piece: Piece, background_colour: Colour) -> ImageTk:
+    def get_image(self, piece: Piece, background_colour: Colour) -> ImageTk.PhotoImage:
         """Get a GUI-ready image of a piece on the specified background colour"""
         if piece:
             image = self._images[piece.__class__][piece.player][background_colour]
@@ -49,7 +49,7 @@ class ImageRepository:
         return ImageTk.PhotoImage(image.convert('RGB'))
 
 
-def get_filename_for_piece(piece: Piece) -> str:
+def get_filename_for_piece(piece: Optional[Piece]) -> str:
     """Find the correct PNG file for a piece"""
     if piece is None:
         return os.path.join(IMAGES_BASE_DIRECTORY, 'blank.png')
@@ -57,13 +57,13 @@ def get_filename_for_piece(piece: Piece) -> str:
     return os.path.join(IMAGES_BASE_DIRECTORY, image_name)
 
 
-def get_image_for_piece(piece: Piece) -> Image:
+def get_image_for_piece(piece: Optional[Piece]) -> Image.Image:
     """Load a piece image from disk"""
     file = get_filename_for_piece(piece)
     return Image.open(file)
 
 
-def get_image_with_background(piece: Piece, background_colour: Colour) -> Image:
+def get_image_with_background(piece: Optional[Piece], background_colour: Colour) -> Image.Image:
     """Load a piece image from disk and add background colour.
 
     You can't make tkinter elements transparent, and they are all rectangular.

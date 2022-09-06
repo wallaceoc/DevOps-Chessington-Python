@@ -21,8 +21,8 @@ To run the tests, use the command `poetry run pytest tests`. This will search th
 
 VSCode debug config has been set up, but you will need to select your virtual environments python interpreter
 before running either the tests or app in debug mode. You can do this in VS Code by going to `View`->`Command Palette`,
-searching for `Python: Select Interpreter` and then browse your machine to find the appropriate python executable (e.g. 
-`.venv\Scripts\python.exe` or `.venv\Scripts\python`)
+searching for `Python: Select Interpreter` and then browse your machine to find the appropriate python executable
+(e.g. `.venv\Scripts\python.exe` or `.venv\Scripts\python`)
 
 ## GUI Dependencies
 
@@ -32,8 +32,12 @@ work out of the box.
 Users relying on third-party Python installations (e.g. Mac/Linux system installs, package managers) may need to configure
 Tcl/Tk separately, or download an official Python distribution for use on this codebase.
 
-Mac users can check out https://www.python.org/download/mac/tcltk/ for further details.
+Mac users can check out <https://www.python.org/download/mac/tcltk/> for further details.
 
-## Notes for WSL users
+### Note for WSL users
 
 Sadly, WSL does not support GUIs, so this application will not work from a WSL terminal. Sorry :(
+
+## During the Workshop
+
+Once you have the app and tests running start on the [workshop instructions](./during_the_workshop.md).

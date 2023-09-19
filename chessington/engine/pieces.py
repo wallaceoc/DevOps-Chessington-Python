@@ -30,17 +30,37 @@ class Piece(ABC):
 
 
 class Pawn(Piece):
+
+    def __init__(self, player: Player):
+        self.player = player
+        self.had_first_move = False
+
     """
     A class representing a chess pawn.
     """
     def get_available_moves(self, board) -> List[Square]:
+        available_moves = []
+
         current_square = board.find_piece(self)
         if self.player == Player.BLACK:
-            square_in_front = Square.at(current_square.row - 1, current_square.col)
-            return [square_in_front]
+            self.available_moves(available_moves, current_square, -1, -2)
         else:
-            square_in_front = Square.at(current_square.row + 1, current_square.col)
-            return [square_in_front]
+            self.available_moves(available_moves, current_square, 1, 2)            
+        
+        return available_moves
+
+    def available_moves(self, available_moves, current_square, sq_in_front : int, sq_two_in_front: int):
+        square_in_front = Square.at(current_square.row + sq_in_front, current_square.col)
+        available_moves.append(square_in_front)
+        if not self.had_first_move:
+            available_moves.append(Square.at(current_square.row + sq_two_in_front, current_square.col))
+        
+    def move_to(self, board, new_square):
+        """
+        Move this piece to the given square on the board.
+        """
+        self.had_first_move = True
+        super().move_to(board, new_square)
 
 
 class Knight(Piece):

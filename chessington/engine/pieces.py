@@ -41,18 +41,23 @@ class Pawn(Piece):
     def get_available_moves(self, board) -> List[Square]:
         available_moves = []
 
-        current_square = board.find_piece(self)
+        current_square = board.find_piece(self)        
+
         if self.player == Player.BLACK:
-            self.available_moves(available_moves, current_square, -1, -2)
+            self.available_moves(available_moves, board, current_square, -1, -2)
         else:
-            self.available_moves(available_moves, current_square, 1, 2)            
+            self.available_moves(available_moves, board, current_square, 1, 2)            
         
         return available_moves
 
-    def available_moves(self, available_moves, current_square, sq_in_front : int, sq_two_in_front: int):
+    def available_moves(self, board, available_moves, current_square, sq_in_front : int, sq_two_in_front: int):        
+
         square_in_front = Square.at(current_square.row + sq_in_front, current_square.col)
-        available_moves.append(square_in_front)
+        if board.get_piece(square_in_front) is None: 
+            available_moves.append(square_in_front)
+
         if not self.had_first_move:
+            
             available_moves.append(Square.at(current_square.row + sq_two_in_front, current_square.col))
         
     def move_to(self, board, new_square):
